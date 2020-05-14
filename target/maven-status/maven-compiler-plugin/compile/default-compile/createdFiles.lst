@@ -1,0 +1,8 @@
+com/cloudera/streaming/examples/flink/types/SimpleIntegerSchema.class
+com/cloudera/streaming/examples/flink/operators/RandomNumberGeneratorSource.class
+com/cloudera/streaming/examples/flink/SimpleKafkaNumberReaderJob.class
+com/cloudera/streaming/examples/flink/utils/Utils.class
+com/cloudera/streaming/examples/flink/operators/HashingKafkaPartitioner.class
+com/cloudera/streaming/examples/flink/SimpleKafkaNumberProcessorJob.class
+com/cloudera/streaming/examples/flink/SimpleKafkaNumberReaderJob$1.class
+com/cloudera/streaming/examples/flink/SimpleKafkaNumberGeneratorJob.class
