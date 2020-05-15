@@ -1,7 +1,0 @@
-/Users/lreszegi/work/git/cloudera/flink-benchmark/src/main/java/com/cloudera/streaming/examples/flink/SimpleKafkaNumberProcessorJob.java
-/Users/lreszegi/work/git/cloudera/flink-benchmark/src/main/java/com/cloudera/streaming/examples/flink/SimpleKafkaNumberReaderJob.java
-/Users/lreszegi/work/git/cloudera/flink-benchmark/src/main/java/com/cloudera/streaming/examples/flink/types/SimpleIntegerSchema.java
-/Users/lreszegi/work/git/cloudera/flink-benchmark/src/main/java/com/cloudera/streaming/examples/flink/SimpleKafkaNumberGeneratorJob.java
-/Users/lreszegi/work/git/cloudera/flink-benchmark/src/main/java/com/cloudera/streaming/examples/flink/operators/HashingKafkaPartitioner.java
-/Users/lreszegi/work/git/cloudera/flink-benchmark/src/main/java/com/cloudera/streaming/examples/flink/utils/Utils.java
-/Users/lreszegi/work/git/cloudera/flink-benchmark/src/main/java/com/cloudera/streaming/examples/flink/operators/RandomNumberGeneratorSource.java

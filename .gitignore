@@ -3,3 +3,5 @@
 .idea
 *iml
 dependency-reduced-pom.xml
+config/job.properties
+target/
