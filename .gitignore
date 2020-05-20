@@ -2,3 +2,7 @@
 */.DS_Store
 .idea
 *iml
+target/
+monitoring/prometheus/data/prometheus/data/
+monitoring/grafana/
+
