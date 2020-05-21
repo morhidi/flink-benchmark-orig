@@ -5,4 +5,6 @@
 target/
 monitoring/prometheus/data/prometheus/data/
 monitoring/grafana/
+dependency-reduced-pom.xml
+config/job.properties
 

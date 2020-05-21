@@ -8,3 +8,7 @@ input.topic=input.topic
 output.topic=output.topic
 from.earliest=true
 number.of.messages=0
+message.size=1000
+fanout.ratio=0.2
+number.of.keys=10000
+state.size=1000
