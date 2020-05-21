@@ -15,7 +15,7 @@ import com.cloudera.streaming.examples.flink.utils.Utils;
 
 import java.util.Optional;
 
-public class SimpleKafkaStringProcessorJob {
+public class ProcessorJob {
 
     public static final String INPUT_TOPIC_PARAM = "input.topic";
     public static final String OUTPUT_TOPIC_PARAM = "output.topic";
@@ -56,6 +56,6 @@ public class SimpleKafkaStringProcessorJob {
                 Utils.readKafkaProperties(params), Optional.of(new HashingKafkaPartitioner<>()));
 
         stream.addSink(kafkaSink).name("KafkaSink");
-        env.execute(SimpleKafkaStringProcessorJob.class.getSimpleName());
+        env.execute(ProcessorJob.class.getSimpleName());
     }
 }

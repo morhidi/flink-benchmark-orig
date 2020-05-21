@@ -13,7 +13,7 @@ import com.cloudera.streaming.examples.flink.utils.Utils;
 
 import java.util.Optional;
 
-public class SimpleKafkaStringGeneratorJob {
+public class GeneratorJob {
 
     public static final String INPUT_TOPIC_PARAM = "input.topic";
     public static final String DEFAULT_INPUT_TOPIC = "input.topic";
@@ -36,6 +36,6 @@ public class SimpleKafkaStringGeneratorJob {
                 Optional.empty());
 
         stream.addSink(kafkaSink).name("KafkaSink");
-        env.execute("GeneratorJob");
+        env.execute(GeneratorJob.class.getSimpleName());
     }
 }
