@@ -10,25 +10,27 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class FakeState extends RichMapFunction<String, String> {
-    private transient ValueState<String> valueState;
-    private final int size;
+	private transient ValueState<String> valueState;
+	private final int size;
 
-    public FakeState(int size) {
-        this.size = size;
-    }
+	public FakeState(int size) {
+		this.size = size;
+	}
 
-    @Override
-    public void open(Configuration parameters) throws Exception {
-        ValueStateDescriptor<String> desc = new ValueStateDescriptor<String>("fakestate", String.class);
-        valueState = getRuntimeContext().getState(desc);
-    }
+	@Override
+	public void open(Configuration parameters) throws Exception {
+		ValueStateDescriptor<String> desc = new ValueStateDescriptor<String>("fakestate", String.class);
+		valueState = getRuntimeContext().getState(desc);
+	}
 
-    @Override
-    public String map(String s) throws Exception {
-        String value = valueState.value();
-        if (value == null) {
-            valueState.update(StringUtils.generateRandomAlphanumericString(ThreadLocalRandom.current(), size));
-        }
-        return s;
-    }
+	@Override
+	public String map(String s) throws Exception {
+		String value = valueState.value();
+		if (value == null) {
+			valueState.update(StringUtils.generateRandomAlphanumericString(ThreadLocalRandom.current(), size));
+		} else {
+			valueState.update(value);
+		}
+		return s;
+	}
 }

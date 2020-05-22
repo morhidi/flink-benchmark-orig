@@ -3,12 +3,10 @@ package com.cloudera.streaming.examples.flink;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
-import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 
 import com.cloudera.streaming.examples.flink.operators.RandomStringGeneratorSource;
-import com.cloudera.streaming.examples.flink.types.SimpleIntegerSchema;
 import com.cloudera.streaming.examples.flink.utils.Utils;
 
 import java.util.Optional;
