@@ -11,10 +11,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class FakeState extends RichMapFunction<String, String> {
 	private transient ValueState<String> valueState;
-	private final int size;
+
+	private final String fakeState;
 
 	public FakeState(int size) {
-		this.size = size;
+		fakeState = StringUtils.generateRandomAlphanumericString(ThreadLocalRandom.current(), size);
 	}
 
 	@Override
@@ -27,7 +28,7 @@ public class FakeState extends RichMapFunction<String, String> {
 	public String map(String s) throws Exception {
 		String value = valueState.value();
 		if (value == null) {
-			valueState.update(StringUtils.generateRandomAlphanumericString(ThreadLocalRandom.current(), size));
+			valueState.update(fakeState);
 		} else {
 			valueState.update(value);
 		}

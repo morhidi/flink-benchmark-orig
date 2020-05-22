@@ -5,17 +5,16 @@ import org.apache.flink.util.StringUtils;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-
 public class FanOut implements MapFunction<String, String> {
-    final float fanout;
+	final String newMessage;
 
-    public FanOut(float fanout) {
-        this.fanout = fanout;
-    }
+	public FanOut(int origSize, float fanout) {
+		int size = Math.round(origSize * fanout);
+		newMessage = StringUtils.generateRandomAlphanumericString(ThreadLocalRandom.current(), size);
+	}
 
-    @Override
-    public String map(String s) throws Exception {
-        int size = Math.round(s.length() * fanout);
-        return StringUtils.generateRandomAlphanumericString(ThreadLocalRandom.current(), size);
-    }
+	@Override
+	public String map(String s) throws Exception {
+		return newMessage;
+	}
 }
