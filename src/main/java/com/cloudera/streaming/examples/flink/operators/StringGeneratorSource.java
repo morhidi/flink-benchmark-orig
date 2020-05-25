@@ -9,13 +9,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomStringGeneratorSource implements ParallelSourceFunction<String> {
+import static com.cloudera.streaming.examples.flink.utils.Utils.*;
 
-	private static final String SLEEP_MILLIS_PARAM = "sleep.millis";
-	private static final String SLEEP_NANOS_PARAM = "sleep.nanos";
-	private static final String MAX_NUM_MESSAGES_PARAM = "number.of.messages";
-	private static final String MESSAGE_SIZE = "message.size";
-	private static final Logger LOG = LoggerFactory.getLogger(RandomStringGeneratorSource.class);
+public class StringGeneratorSource implements ParallelSourceFunction<String> {
+
+	private static final Logger LOG = LoggerFactory.getLogger(StringGeneratorSource.class);
 	private final long sleepMillis;
 	private final int sleepNanos;
 	private final int maxNumberOfMessages;
@@ -23,7 +21,7 @@ public class RandomStringGeneratorSource implements ParallelSourceFunction<Strin
 	private volatile boolean isRunning = true;
 	private final String sampleMessage;
 
-	public RandomStringGeneratorSource(ParameterTool params) {
+	public StringGeneratorSource(ParameterTool params) {
 		this.sleepMillis = params.getInt(SLEEP_MILLIS_PARAM, 0);
 		this.sleepNanos = params.getInt(SLEEP_NANOS_PARAM, 0);
 		this.maxNumberOfMessages = params.getInt(MAX_NUM_MESSAGES_PARAM, 0);
