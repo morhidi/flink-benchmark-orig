@@ -1,11 +1,14 @@
 package com.cloudera.streaming.examples.flink.types;
 
 public class Message {
-	public int key;
+	public int fakeKey;
 	public String value;
 
-	public Message(int key, String value) {
-		this.key = key;
+	public Message() {
+	}
+
+	public Message(int fakeKey, String value) {
+		this.fakeKey = fakeKey;
 		this.value = value;
 	}
 }

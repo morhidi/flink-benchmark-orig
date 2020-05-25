@@ -39,8 +39,8 @@ public class ProcessorJob {
 
 		DataStream<Message> messages = stream.map(new MessageParser(params));
 
-		if (params.getInt(STATE_SIZE_PARAM) > 0) {
-			messages = messages.keyBy("key")
+		if (params.getInt(STATE_SIZE_PARAM)  > 0) {
+			messages = messages.keyBy("fakeKey")
 					.map(new StateGenerator(params));
 		}
 
