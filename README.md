@@ -46,7 +46,7 @@ For list of available parameters refer to ```config/job.properties.example```.
 Copy the ```flink-benchmark-{version}.jar``` from the target folder of the project and a valid ```job.properties``` file to one of the flink nodes.
 
 ### ELK
-Generator:
+Generator
 ```
 flink run -m yarn-cluster -d -p 3 -ys 1 -ytm 1500 -ynm StringGenerator \
 -yD metrics.reporter.kafka.class=org.apache.flink.metrics.kafka.KafkaMetricsReporter \
@@ -56,7 +56,7 @@ flink run -m yarn-cluster -d -p 3 -ys 1 -ytm 1500 -ynm StringGenerator \
 -yD metrics.reporter.kafka.log.errors=false \
 -c com.cloudera.streaming.examples.flink.GeneratorJob ~/flink-benchmark-{version}.jar job.properties
 ```
-Processor:
+Processor
 ```
 flink run -m yarn-cluster -d -p 9 -ys 1 -ytm 1500 -ynm Processor \
 -yD metrics.reporter.kafka.class=org.apache.flink.metrics.kafka.KafkaMetricsReporter \
