@@ -14,13 +14,14 @@ prometheus:
   - 9090:9090
 
 pushgateway:
-  image: prom/pushgateway:v0.8.0
+  image: prom/pushgateway
   container_name: pushgateway
   restart: unless-stopped
   expose:
   - 9091
   ports:
   - "9091:9091"
+  command: --web.enable-admin-api
 
 grafana:
   image: grafana/grafana:latest
