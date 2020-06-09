@@ -18,6 +18,7 @@ The following steps are necessary to install ELK stack.
  - Modify ```flink-metrics.conf``` by replacing ```{KAFKA-BROKERS}``` with the actual list of kafka brokers (only non-SSL connection is supported)
  - Execute ```docker-compose up``` in the folder of ```docker-compose.yml```
  - Check availability of Kibana on ```http://monitoring-host:5601```
+ - In Settings/Saved objects import ```flink-simplified.ndjson``` from dashboards folder
 
 ### Prometheus
 
@@ -31,7 +32,9 @@ The following steps are necessary to install Prometheus-Grafana stack.
    - Install/execute pushgateway based on the instructions at https://github.com/prometheus/pushgateway
    - Modify ```monitoring/prometheus/config/prometheus.yml``` by fixing pushgateway host in targets under flink job
  - Execute ```docker-compose up``` in the folder of ```docker-compose.yml```
- - Check availability of Grafana on ```http://monitoring-host:3000```
+ - Check availability of Grafana on ```http://monitoring-host:3000``` (password is set in ```docker-compose.yml```)
+ - Add prometheus datasource
+ - Import ```Flink-grafana.json``` from dashboards folder
 
 ## Build
 
@@ -44,6 +47,12 @@ Build the maven project by using the command:
 For list of available parameters refer to ```config/job.properties.example```.
 
 Copy the ```flink-benchmark-{version}.jar``` from the target folder of the project and a valid ```job.properties``` file to one of the flink nodes.
+
+Optional steps for more accurate results:
+ - make sure that the default kafka partition number is larger than the desired parallelism factor used in the jobs (```-p``` parameter) 
+ - separate yarn node managers and kafka nodes to different nodes in the cluster
+ - add multiple disk volumes to kafka's ```log.dirs``` 
+ 
 
 ### ELK
 Generator
