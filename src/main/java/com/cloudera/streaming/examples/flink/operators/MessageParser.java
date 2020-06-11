@@ -9,8 +9,6 @@ import com.cloudera.streaming.examples.flink.utils.Utils;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.cloudera.streaming.examples.flink.utils.Utils.*;
-
 public class MessageParser implements MapFunction<String, Message> {
 	final String newValue;
 	final int keySize;
@@ -18,7 +16,7 @@ public class MessageParser implements MapFunction<String, Message> {
 	public MessageParser(ParameterTool params) {
 		newValue = StringUtils.generateRandomAlphanumericString(
 				ThreadLocalRandom.current(),
-				Math.round(params.getInt(MESSAGE_SIZE) * params.getFloat(FANOUT_PARAM)));
+				Math.round(params.getInt(Utils.MESSAGE_SIZE) * params.getFloat(Utils.FANOUT_PARAM)));
 		this.keySize = params.getInt(Utils.NUM_KEYS_PARAM);
 	}
 

@@ -14,8 +14,6 @@ import com.cloudera.streaming.examples.flink.utils.Utils;
 
 import java.util.Optional;
 
-import static com.cloudera.streaming.examples.flink.utils.Utils.*;
-
 public class ProcessorJob {
 
 	public static void main(String[] args) throws Exception {
@@ -26,11 +24,11 @@ public class ProcessorJob {
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
 		FlinkKafkaConsumer<String> kafkaSource = new FlinkKafkaConsumer<String>(
-				params.getRequired(INPUT_TOPIC_PARAM),
+				params.getRequired(Utils.INPUT_TOPIC_PARAM),
 				new SimpleStringSchema(),
 				Utils.readKafkaProperties(params));
 
-		if (params.getBoolean(FROM_EARLIEST_PARAM)) {
+		if (params.getBoolean(Utils.FROM_EARLIEST_PARAM)) {
 			kafkaSource.setStartFromEarliest();
 		}
 		DataStream<String> stream = env
@@ -39,7 +37,7 @@ public class ProcessorJob {
 
 		DataStream<Message> messages = stream.map(new MessageParser(params));
 
-		if (params.getInt(STATE_SIZE_PARAM)  > 0) {
+		if (params.getInt(Utils.STATE_SIZE_PARAM) > 0) {
 			messages = messages.keyBy("fakeKey")
 					.map(new StateGenerator(params));
 		}
@@ -47,7 +45,7 @@ public class ProcessorJob {
 		stream = messages.map(message -> message.value);
 
 		FlinkKafkaProducer<String> kafkaSink = new FlinkKafkaProducer<>(
-				params.get(OUTPUT_TOPIC_PARAM),
+				params.get(Utils.OUTPUT_TOPIC_PARAM),
 				new SimpleStringSchema(),
 				Utils.readKafkaProperties(params), Optional.empty());
 

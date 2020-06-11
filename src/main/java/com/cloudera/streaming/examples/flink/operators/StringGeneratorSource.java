@@ -4,12 +4,11 @@ import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.functions.source.ParallelSourceFunction;
 import org.apache.flink.util.StringUtils;
 
+import com.cloudera.streaming.examples.flink.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ThreadLocalRandom;
-
-import static com.cloudera.streaming.examples.flink.utils.Utils.*;
 
 public class StringGeneratorSource implements ParallelSourceFunction<String> {
 
@@ -22,10 +21,10 @@ public class StringGeneratorSource implements ParallelSourceFunction<String> {
 	private final String sampleMessage;
 
 	public StringGeneratorSource(ParameterTool params) {
-		this.sleepMillis = params.getInt(SLEEP_MILLIS_PARAM, 0);
-		this.sleepNanos = params.getInt(SLEEP_NANOS_PARAM, 0);
-		this.maxNumberOfMessages = params.getInt(MAX_NUM_MESSAGES_PARAM, 0);
-		this.messageSize = params.getInt(MESSAGE_SIZE, 1);
+		this.sleepMillis = params.getInt(Utils.SLEEP_MILLIS_PARAM, 0);
+		this.sleepNanos = params.getInt(Utils.SLEEP_NANOS_PARAM, 0);
+		this.maxNumberOfMessages = params.getInt(Utils.MAX_NUM_MESSAGES_PARAM, 0);
+		this.messageSize = params.getInt(Utils.MESSAGE_SIZE, 1);
 		this.sampleMessage = StringUtils.generateRandomAlphanumericString(ThreadLocalRandom.current(), messageSize);
 	}
 

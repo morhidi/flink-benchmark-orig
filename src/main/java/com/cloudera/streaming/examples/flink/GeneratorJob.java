@@ -11,8 +11,6 @@ import com.cloudera.streaming.examples.flink.utils.Utils;
 
 import java.util.Optional;
 
-import static com.cloudera.streaming.examples.flink.utils.Utils.INPUT_TOPIC_PARAM;
-
 public class GeneratorJob {
 
 	public static void main(String[] args) throws Exception {
@@ -27,7 +25,7 @@ public class GeneratorJob {
 				.name("StringGenerator");
 
 		FlinkKafkaProducer<String> kafkaSink = new FlinkKafkaProducer<>(
-				params.getRequired(INPUT_TOPIC_PARAM),
+				params.getRequired(Utils.INPUT_TOPIC_PARAM),
 				new SimpleStringSchema(),
 				Utils.readKafkaProperties(params),
 				Optional.empty());
